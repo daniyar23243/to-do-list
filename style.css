@@ -159,6 +159,10 @@ input[type="checkbox"]:checked::before{
     font-size: 1rem;
 }
 
+.counter-container button:hover{
+    color: red;
+}
+
 .footer{
     display: flex;
     gap: 1.8rem;

@@ -58,6 +58,8 @@ function  displayTasks  () {
     todoCount.textContent = todo.length;
 }
 
+
+
 function editTask(index){
     const todoItem= document.getElementById(`todo-${index}`);
     const existingText = todo[index].text;
@@ -65,16 +67,31 @@ function editTask(index){
     inputElement.value = existingText;
     todoItem.replaceWith(inputElement);
     inputElement.focus();
+    function update() {
+        const updatedText = inputElement.value.trim();
+        if (updatedText) {
+            todo[index].text = updatedText;
+            saveToLocalStorage();
+        }
+        displayTasks();
+    }
 
-    inputElement.addEventListener("blur", function(){
+    inputElement.addEventListener("blur", function (){
         const updatedText = inputElement.value.trim();   
         if (updatedText) {
             todo[index].text = updatedText;
             saveToLocalStorage();
         }
             displayTasks();
-        
-})
+        })
+        inputElement.addEventListener("keydown", function (event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                update();
+            }
+        });         
+
+
 }
 function toggleTask(index) {
     todo[index].disabled = !todo[index].disabled;
