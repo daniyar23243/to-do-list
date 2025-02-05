@@ -1,7 +1,7 @@
 :root{
     --gradient: linear-gradient(
         180deg, 
-        rgba(45, 112, 1253, 0.73), 
+        rgba(45, 112, 125, 0.73), 
         #163e92 100%);
     --dark: #001747;
     --grey: #b1bacb;
@@ -83,7 +83,7 @@ input[type="text"]::placeholder{
 ul{
     padding: 0;
     margin: 0;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
 li{
@@ -95,12 +95,27 @@ li{
 }
 
 #todoList p{
+    display: flex;
+    gap: 1rem;
+    color: var(--dark);
+    align-items: center;
+}
+
+#todoList .disabled{
+
     color: #8f98a8;
 }
 
 .disabled {
     display: flex;
     text-decoration: line-through;
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
 }
 
 input[type="checkbox"]::before{
@@ -115,7 +130,7 @@ input[type="checkbox"]::before{
     color: transparent;
 }
 
-input[type="checkbox"]::before::after{
+input[type="checkbox"]:checked::before{
     color: var(--white);
     background-color: var(--green);
     border: 0.06rem solid var(--green);
@@ -175,10 +190,11 @@ input[type="checkbox"]::before::after{
 }
 
 
-.scroll::-webkit-scrollbar-thumd{
+.scroll::-webkit-scrollbar-thumb{
     background-color: var(--blue);
     border-radius: 0.5rem;
 }
+
 .scroll::-webkit-scrollbar-track{
    display: none;
 }
