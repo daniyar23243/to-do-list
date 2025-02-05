@@ -163,10 +163,6 @@ input[type="checkbox"]:checked::before{
     color: red !important;
     font-size: 1.2rem !important;
 }
-/*
-.counter-container button:hover{
-    color: red;
-}*/
 
 .footer{
     display: flex;
