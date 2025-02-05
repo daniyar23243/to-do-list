@@ -6,6 +6,7 @@ const todoCount = document.getElementById("todoCount");
 const todoList = document.getElementById("todoList");
 const addButton = document.querySelector(".btn");
 const deleteButton = document.getElementById("deleteButton");
+const delay = 500;
 
 //initialize 
 
@@ -104,7 +105,18 @@ function deleteAllTasks() {
     todo = [];
     saveToLocalStorage();
     displayTasks();
+    paintRed();
 }
+function paintRed(){
+    document.querySelectorAll(".bin").forEach(element => {
+        element.classList.add("colored");
+    });
+    setTimeout(function() {
+        document.querySelectorAll(".bin").forEach(element => {
+            element.classList.remove("colored");})
+      }, delay);
+}
+
 
 function saveToLocalStorage() {
     localStorage.setItem("todo", JSON.stringify(todo));
