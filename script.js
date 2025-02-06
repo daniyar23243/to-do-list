@@ -7,6 +7,7 @@ const todoList = document.getElementById("todoList");
 const addButton = document.querySelector(".btn");
 const deleteButton = document.getElementById("deleteButton");
 const delay = 500;
+const deleteMarked = document.getElementById("deleteMarked");
 
 //initialize 
 
@@ -121,3 +122,13 @@ function paintRed(){
 function saveToLocalStorage() {
     localStorage.setItem("todo", JSON.stringify(todo));
 };
+
+deleteMarked.addEventListener("click", function () {
+    todo = todo.filter(item => !item.disabled);
+    saveToLocalStorage();
+    displayTasks();
+    document.getElementById("deleteMarked").classList.add("marked");
+    setTimeout(function() {
+        document.getElementById("deleteMarked").classList.remove("marked");
+      }, delay);
+});
